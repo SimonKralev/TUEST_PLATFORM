@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package com.schoolplatform.demo.entities;
 
 public enum UserType {
     ADMINISTRATOR,
