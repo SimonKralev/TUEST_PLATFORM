@@ -19,10 +19,10 @@ public class User {
     @Column(name = "id", updatable = false)
     private Long id;
 
-//    @Enumerated
-////  @NotNull
-//    @Column(name = "type")
-//    private UserType type;
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    @Column(name = "type")
+    private UserType type;
 
     @Column(name = "firstname", nullable = false)
     @NotNull

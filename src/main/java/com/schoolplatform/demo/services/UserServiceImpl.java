@@ -1,6 +1,7 @@
 package com.schoolplatform.demo.services;
 
 import com.schoolplatform.demo.entities.User;
+import com.schoolplatform.demo.entities.UserType;
 import com.schoolplatform.demo.models.RegistrationRequest;
 import com.schoolplatform.demo.models.RegistrationResponse;
 import com.schoolplatform.demo.repository.UserRepository;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService{
         user.setEmail(registrationRequest.getEmail());
         user.setPassword(registrationRequest.getPassword());
         user.setBio(registrationRequest.getBio());
+        user.setType(UserType.valueOf(registrationRequest.getUserType()));
 
         userRepository.save(user);
 

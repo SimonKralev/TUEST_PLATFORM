@@ -6,11 +6,12 @@ $(function () {
 function registerUser() {
 
     $(".register-form").on("click", "#register", function () {
+
         let $firstName = $("#firstName").val();
         let $lastName = $("#lastName").val();
         let $email = $("#email").val();
         let $password = $("#current-password").val();
-        // let $userType = $("#user-type").val();
+        let $userType = $("#user-type").val();
         let $bio = $("#bio").val();
 
         let requestBody = {
@@ -18,7 +19,7 @@ function registerUser() {
             "lastname": $lastName,
             "email": $email,
             "password": $password,
-            // "userType": NULL,
+            "userType": $userType,
             "bio": $bio
         };
 

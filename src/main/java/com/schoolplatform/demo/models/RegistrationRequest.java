@@ -34,5 +34,5 @@ public class RegistrationRequest {
     @Size(min = 2, max = 100)
     private String bio;
 
-//    private String userType;
+    private String userType;
 }
