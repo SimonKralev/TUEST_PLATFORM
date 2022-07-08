@@ -1,11 +1,9 @@
 package com.schoolplatform.demo.repository;
 
-import com.schoolplatform.demo.entities.User;
+import com.schoolplatform.demo.entities.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-
-    User findUserByEmail(String email);
+public interface CourseRepository extends JpaRepository<Course, Long> {
 }

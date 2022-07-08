@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Getter
 @Setter
@@ -46,6 +47,9 @@ public class User {
 
     @Column(name = "bio")
     private String bio;
+
+    @OneToMany(mappedBy="teacherid")
+    private List<Course> courses;
 
     public User(String firstname, String lastname, String email, String password, String bio) {
         this.firstname = firstname;

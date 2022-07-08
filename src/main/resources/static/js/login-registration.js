@@ -6,7 +6,7 @@ $(function () {
 function registerUser() {
 
     $(".register-form").on("click", "#register", function () {
-
+        console.log("skndjs");
         let $firstName = $("#firstName").val();
         let $lastName = $("#lastName").val();
         let $email = $("#email").val();

@@ -1,4 +1,4 @@
-package com.schoolplatform.demo.controllers;
+package com.schoolplatform.demo.controllers.rest;
 
 import com.schoolplatform.demo.models.RegistrationRequest;
 import com.schoolplatform.demo.models.RegistrationResponse;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
-public class UserController {
+public class UserRestController {
 
     private final UserService userService;
     @PostMapping("/register")
