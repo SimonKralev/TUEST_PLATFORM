@@ -33,4 +33,11 @@ public class CourseCreationRequest {
     @NotNull
     @Size(min = 1, max = 50)
     private String location;
+
+    public String getLocation(String location) {
+        if (location.isEmpty()) {
+            return null;
+        }
+        return location;
+    }
 }

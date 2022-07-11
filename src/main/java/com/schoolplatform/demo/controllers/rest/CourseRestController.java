@@ -6,6 +6,7 @@ import com.schoolplatform.demo.services.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 // methods
@@ -15,9 +16,9 @@ public class CourseRestController {
 
     private final CourseService courseService;
 
-    @PostMapping("/courses/create") // go to the created course (later)
+    @RequestMapping("/courses/create") // go to the created course (later)
     public CourseCreationResponse createCourse(@RequestBody CourseCreationRequest courseCreationRequest){
-        System.out.println(courseCreationRequest);
+        //System.out.println(courseCreationRequest);
         return courseService.createCourse(courseCreationRequest);
     }
 }

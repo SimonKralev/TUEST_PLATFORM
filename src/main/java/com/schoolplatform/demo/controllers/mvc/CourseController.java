@@ -1,9 +1,13 @@
 package com.schoolplatform.demo.controllers.mvc;
 
+import com.schoolplatform.demo.entities.Course;
+import com.schoolplatform.demo.repository.CourseRepository;
 import com.schoolplatform.demo.services.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 // returns page
 @Controller
@@ -11,10 +15,55 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CourseController {
 
     private final CourseService courseService;
+    private final CourseRepository courseRepository;
 
-    @GetMapping("/courses")
+    @GetMapping("/courses/create")
     public String courseView(){
         return "create-course";
     }
+
+    @GetMapping("/courses/all")
+    public ModelAndView displayAllCourses() {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Iterable<Course> allCourses = courseRepository.findAll();
+            modelAndView.setViewName("all-courses");
+            modelAndView.addObject("allCourses", allCourses);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //modelAndView.setViewName("error");
+        }
+        return modelAndView;
+    }
+
+    //@PostMapping(value = ("/course/{course_id}"))
+    @GetMapping("/courses/{course_id}")
+    public ModelAndView displayCourse(@PathVariable("course_id") String course_id) {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Course course = courseRepository.findCourseById(Long.valueOf(course_id));
+            modelAndView.setViewName("/course");
+            modelAndView.addObject("course", course);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return modelAndView;
+    }
+
+    /*
+    Will work when we create enrollments
+    @GetMapping("home")
+    public ModelAndView upcomingCourses() {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            Course upcomingCourses = courseService.findEnrolledCourses();
+            modelAndView.setViewName("/courses/(path=${course.getId()})");
+            modelAndView.addObject("course", course);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return modelAndView;
+    }
+    */
 }
 

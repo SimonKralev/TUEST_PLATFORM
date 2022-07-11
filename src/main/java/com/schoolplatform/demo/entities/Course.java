@@ -1,19 +1,17 @@
 package com.schoolplatform.demo.entities;
 
-import com.schoolplatform.demo.entities.User;
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Table(name = "courses")
 public class Course {
     @Id
@@ -22,9 +20,9 @@ public class Course {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacherid")
+    @JoinColumn(name = "teacher_id")
     @NotNull
-    private User teacherid;
+    private User teacher_id;
 
     @Column(name = "title", nullable = false)
     @NotNull
@@ -50,12 +48,30 @@ public class Course {
     @Size(min = 1, max = 50)
     private String location;
 
+    @OneToMany(mappedBy = "course_id") // enrollment id
+    private List<Enrollment> enrollments;
+
     public void setType(String type) {
-        if (type == CourseType.IN_PERSON.name()) {
+        if (type.equals(CourseType.IN_PERSON.name())) {
             this.type = CourseType.IN_PERSON;
         }
         else {
             this.type = CourseType.ONLINE;
         }
+    }
+
+    public String getDisplayableSubject() {
+        List<String> subjectImages = List.of(new String[]{"science", "literature", "language", "astronomy"});
+        if (!subjectImages.contains(subject)) {
+            return "default.png";
+        }
+        return subject + ".png";
+    }
+
+    public String getDisplayableLocation() {
+        if (type == CourseType.ONLINE) {
+            return "Online";
+        }
+        return location;
     }
 }

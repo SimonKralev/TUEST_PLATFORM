@@ -48,14 +48,16 @@ public class User {
     @Column(name = "bio")
     private String bio;
 
-    @OneToMany(mappedBy="teacherid")
+    @OneToMany(mappedBy="teacher_id")
     private List<Course> courses;
 
-    public User(String firstname, String lastname, String email, String password, String bio) {
+    @OneToMany(mappedBy = "student_id") // enrollment id
+    private List<Enrollment> enrollments;
+
+    public User(String firstname, String lastname, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.bio = bio;
     }
 }
