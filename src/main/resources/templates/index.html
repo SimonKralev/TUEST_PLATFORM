@@ -26,7 +26,7 @@
         <div class="main-navigation fixed-top site-header" id="mainmenu-area">
             <nav class="navbar navbar-expand-lg ">
                 <div class="container align-items-center">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/home">
                         <h2 class="mb-0"><span class="text-color">Cours</span>ify</h2>
                     </a>
                     <!-- Toggler -->
@@ -39,12 +39,12 @@
                         <!-- Links -->
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item ">
-                                <a href="/" th:href="@{/home}" class="nav-link smoth-scroll">
+                                <a href="/home" th:href="@{/home}" class="nav-link smoth-scroll">
                                     Home
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a href="/all-courses.html" th:href="@{/courses/all}" class="nav-link smoth-scroll">
+                                <a href="/all-courses" th:href="@{/courses/all}" class="nav-link smoth-scroll">
                                     Courses
                                 </a>
                             </li>
@@ -76,7 +76,7 @@
     </section>
 
 
-    <!-- Courses -->
+    <!-- Courses (doesn't work because we don't have logged users yet) -->
     <section class="section blog-home border-top" id="blog">
         <div class="container">
             <div class="row justify-content-center">
@@ -94,7 +94,7 @@
                         <div class="blog-item-content p-4">
                             <div class="blog-meta mb-2">
                                 <span><i th:text="${course.getDate()}" class="ti-time mr-2"></i></span>
-                                <a th:text="${course.getTeacher_id().getFirstname() + ' ' + course.getTeacher_id().getLastname()}" href="#"></a>
+                                <a th:text="${course.getTeacher().getFirstname() + ' ' + course.getTeacher().getLastname()}" href="#"></a>
                             </div>
                             <h4 th:text="${course.getTitle()}" class="mt-2 mb-3"><a href="create-course.html"></a></h4>
                         </div>

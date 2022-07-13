@@ -4,5 +4,5 @@ import com.schoolplatform.demo.models.EnrollmentRequest;
 import com.schoolplatform.demo.models.EnrollmentResponse;
 
 public interface EnrollmentService {
-    public EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest);
+    EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest);
 }

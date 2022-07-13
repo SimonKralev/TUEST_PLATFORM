@@ -6,6 +6,6 @@ import com.schoolplatform.demo.models.CourseCreationResponse;
 
 public interface CourseService {
     CourseCreationResponse createCourse(CourseCreationRequest courseCreationRequest);
-
     Iterable<Course> findAll();
+    public Course findCourseById(Long id);
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -16,11 +16,11 @@ import java.sql.Date;
 public class EnrollmentRequest {
 
     @NotNull
-    private User student_id;
+    private Long student;
 
     @NotNull
-    private Course course_id;
+    private Long course;
 
     @NotNull
-    private Date registration_time;
+    private String registrationTime;
 }

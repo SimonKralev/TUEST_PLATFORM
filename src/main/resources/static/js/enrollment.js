@@ -1,22 +1,23 @@
 "use strict";
 $(function () {
+    console.log("in enrollment.js")
     enrollInCourse();
 });
 
 function enrollInCourse() {
-
-    $(".enroll").on("click", "#enroll", function () {
-        let $student_id = "41";
-        let $course_id = $course_id;
+    $(".course").on("click", '#enroll', function () {
+        console.log("Trying to enroll");
+        let $student_id = "1";
+        let $course_id = String(course_id);
         let $registration_time = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
         let requestBody = {
-            "student_id": $student_id,
-            "course_id": $course_id,
-            "registration_time": $registration_time
+            "student": $student_id,
+            "course": $course_id,
+            "registrationTime": $registration_time
         };
 
-        fetch("/courses/" + $course_id, {
+        fetch("/courses/" + $course_id + "", {
             method: "POST",
             body: JSON.stringify(requestBody),
             headers: {

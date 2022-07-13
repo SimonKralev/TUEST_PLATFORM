@@ -1,19 +1,20 @@
 package com.schoolplatform.demo.models;
 
+
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Getter
 @Setter
-public class CourseCreationResponse {
-    @NotNull
-    @Size(min = 1, max = 50)
-    private String title;
+public class ReviewResponse {
 
     @NotNull
-    private Timestamp date;
+    private int rating;
+
+    private String comment;
+
+    @NotNull
+    private Timestamp timeOfPosting;
 }

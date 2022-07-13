@@ -200,7 +200,7 @@ body {
   font-weight: 400;
   font-family: Poppins; }
 
-.container {
+.form-container {
   width: 900px;
   background: #fff;
   margin: 0 auto;
@@ -522,6 +522,14 @@ label.valid:after {
   margin-top: 10px; }
 
 @media screen and (max-width: 1200px) {
+  .form-container {
+    width: calc( 100% - 30px);
+    max-width: 100%; } }
+@media screen and (min-width: 1024px) {
+  .form-container {
+    max-width: 1200px; } }
+
+@media screen and (max-width: 1200px) {
   .container {
     width: calc( 100% - 30px);
     max-width: 100%; } }
@@ -619,5 +627,58 @@ label.valid:after {
   background-color: #D4A373;
   transition: 0.5s;
 }
+
+.form-check-input {
+  background-color: #D4A373;
+  padding-right: 30px;
+  margin-right: 50px;
+  display: inline-block;
+  float: right;
+}
+
+input[type='radio']:after {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #E9EDC9;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+}
+
+input[type='radio']:checked:after {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #D4A373;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+}
+
+#create-course {
+  border-radius: 10px;
+  border-width: 0px;
+}
+.signup {
+  width: 900px;
+  background: #fff;
+  margin: 0 auto;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px; }
 
 #sourceMappingURL style.css.map

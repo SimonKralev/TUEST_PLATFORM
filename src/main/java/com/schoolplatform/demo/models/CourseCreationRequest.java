@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -22,7 +22,7 @@ public class CourseCreationRequest {
     private String subject;
 
     @NotNull
-    private Date date;
+    private String date;
 
     @NotNull
     private Double price;
@@ -33,6 +33,9 @@ public class CourseCreationRequest {
     @NotNull
     @Size(min = 1, max = 50)
     private String location;
+
+    @NotNull
+    private String visibility;
 
     public String getLocation(String location) {
         if (location.isEmpty()) {

@@ -520,14 +520,33 @@ label.valid:after {
   transition: 0.5s;
 }
 
-.star-rating {
-
-}
-
 .star {
   font-size: 300%;
   cursor: default;
   color: #D4A373;
 }
+
+.active {
+  color: #F56476;
+}
+
+.passive {
+  color: #D4A373;
+}
+
+.star-rating-review {
+  padding: 10px;
+}
+
+.review-item {
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.reviews-items-container {
+  width: 300%;
+}
+
+
 
 #sourceMappingURL review-style.css.map

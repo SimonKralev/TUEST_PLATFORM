@@ -1,3 +1,4 @@
+var globalActiveStars = 1;
 function activateStars(starIndex) {
     let counter = 5;
     while(counter > 0) {
@@ -9,4 +10,5 @@ function activateStars(starIndex) {
         document.getElementById("star" + counter).style.color = "#F56476";
         counter--;
     }
+    globalActiveStars = starIndex;
 }

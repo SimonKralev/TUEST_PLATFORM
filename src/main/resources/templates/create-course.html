@@ -1,69 +1,119 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create a new course</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.css" th:href="@{/fonts/material-icon/css/material-design-iconic-font.css}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.css" th:href="@{/fonts/material-icon/css/material-design-iconic-font.css}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+        <link rel="stylesheet" href="../static/css/home-style.css" th:href="@{/css/home-style.css}">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+        <title>Create a new course</title>
+    </head>
+    <body id="top-header">
+        <!-- Navbar -->
+        <div class="main-navigation fixed-top site-header" id="mainmenu-area">
+            <nav class="navbar navbar-expand-lg ">
+                <div class="container align-items-center">
+                    <a class="navbar-brand" href="/home">
+                        <h2 class="mb-0"><span class="text-color">Cours</span>ify</h2>
+                    </a>
+                    <!-- Toggler -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="ti-menu-alt"></span>
+                    </button>
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-</head>
-<body>
-
-    <div class="main">
-        <!-- Sign up form -->
-        <section class="create-course">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Create a new course</h2>
-                        <div method="post" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="title"><i class="zmdi zmdi-attachment-alt    material-icons-name"></i></label>
-                                <input type="text" name="title" id="title" placeholder="Course title"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject"><i class="zmdi zmdi-book material-icons-name"></i></label>
-                                <input type="text" name="subject" id="subject" placeholder="Subject"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="date"><i class="zmdi zmdi-email"></i></label>
-                                <input type="date" name="date" id="date" placeholder="Date"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="price"><i class="zmdi zmdi-money"></i></label>
-                                <input type="number" name="price" id="price" placeholder="Price"/>
-                            </div>
-                            <div class="form-group" onclick="hideLocationInput();">
-                                <input type="checkbox" name="course-type" id="agree-term" class="agree-term"  onclick="hideLocationInput();"/>
-                                <label for="agree-term" class="label-checkbox"><span><span></span></span>The course will be online</label>
-                            </div>
-                            <div id = "location-form-group" class="form-group">
-                                <label for="location"><i class="zmdi zmdi-pin-drop"></i></label>
-                                <input type="text" name="location" id="location" placeholder="Location"/>
-                            </div>
-
-                            <div class="form-group form-button">
-                                <button type="button" name="signup" id="create-course" class="form-submit" value="Create"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="create-course-image">
-                        <figure><img src="../static/images/createCourse.png" th:src="@{/images/createCourse.png}" alt="create course image"></figure>
+                    <!-- Collapse -->
+                    <div class="collapse navbar-collapse text-center text-lg-left" id="navbarmain">
+                        <!-- Links -->
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item ">
+                                <a href="/home" th:href="@{/home}" class="nav-link smoth-scroll">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="/courses/all" th:href="@{/courses/all}" class="nav-link smoth-scroll">
+                                    Courses
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="" class="nav-link smoth-scroll">
+                                    About
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="/my-profile" th:href="@{/my-profile}" class="btn btn-border-tp btn-small ml-3">My profile</a>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-<!-- JS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../static/js/course-type.js" th:src="@{/js/course-type.js}"></script>
-    <script src="../static/js/course-creation.js" th:src="@{/js/course-creation.js}"></script>
-</body>
+            </nav>
+        </div>
+
+        <div class="main">
+            <!-- Create a course -->
+            <section class="create-course">
+                <div class="form-container">
+                    <div class="signup-content">
+                        <div class="signup-form">
+                            <h2 class="form-title">Create a new course</h2>
+                            <div class="register-form" id="register-form">
+                                <div class="form-group">
+                                    <label for="title"><i class="zmdi zmdi-attachment-alt material-icons-name"></i></label>
+                                    <input type="text" name="title" id="title" placeholder="Course title"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject"><i class="zmdi zmdi-book material-icons-name"></i></label>
+                                    <input type="text" name="subject" id="subject" placeholder="Subject"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date"><!--i class="zmdi zmdi-calendar"></i--></label>
+                                    <input type="date" name="date" id="date" placeholder="Date"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="time"><!--i class="zmdi zmdi-timer"></i--></label>
+                                    <input type="time" name="time" id="time" placeholder="Time"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price"><i class="zmdi zmdi-money"></i></label>
+                                    <input type="number" name="price" id="price" placeholder="Price"/>
+                                </div>
+                                <!--div class="form-group">
+                                    <h4>Course visibility: </h4>
+                                    <div id ="public-visibility-form-group" class="visibility-form-group">
+                                        <input type="radio" name="visibility" id="PUBLIC" class=" " placeholder="Public course" checked/>
+                                        <label for="PUBLIC"><i class="zmdi zmdi-accounts-outline"></i><span><span>&nbsp&nbsp&nbspPublic course</span></span></label>
+                                    </div>
+                                    <div id="private-visibility-form-group" class="visibility-form-group">
+                                        <input type="radio" name="visibility" id="PRIVATE" class="form-check-input agree-term" placeholder="Private course"/>
+                                        <label for="PRIVATE"><i class="zmdi zmdi-account-o"></i><span><span>&nbsp&nbsp&nbspPrivate course</span></span></label>
+                                    </div>
+                                </div-->
+                                <div class="form-group" onclick="hideLocationInput();">
+                                    <input type="checkbox" name="course-type" id="agree-term" class="agree-term"  onclick="hideLocationInput();"/>
+                                    <label for="agree-term" class="label-checkbox"><span><span></span></span>The course will be online</label>
+                                </div>
+                                <div id="location-form-group" class="form-group">
+                                    <label for="location"><i class="zmdi zmdi-pin-drop"></i></label>
+                                    <input type="text" name="location" id="location" placeholder="Location"/>
+                                </div>
+                                <div class="form-group form-button">
+                                    <button type="button" name="create-course" id="create-course" class="form-submit btn">Create</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="create-course-image">
+                            <figure><img src="../static/images/createCourse.png" th:src="@{/images/createCourse.png}" alt="create course image"></figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- JS -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="../static/js/course-type.js" th:src="@{/js/course-type.js}"></script>
+        <script src="../static/js/create-course.js" th:src="@{/js/create-course.js}"></script>
+    </body>
 </html>

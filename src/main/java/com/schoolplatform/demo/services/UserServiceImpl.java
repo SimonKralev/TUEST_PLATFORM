@@ -6,7 +6,6 @@ import com.schoolplatform.demo.models.RegistrationRequest;
 import com.schoolplatform.demo.models.RegistrationResponse;
 import com.schoolplatform.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,6 +32,16 @@ public class UserServiceImpl implements UserService{
         registrationResponse.setLastname(user.getLastname());
 
         return registrationResponse;
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public User findUserById(Long id) {
+        return userRepository.findUserById(id);
     }
 
 }

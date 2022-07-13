@@ -6,20 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnrollmentResponse {
-
+public class ReviewRequest {
     @NotNull
-    private Long student;
+    private Long user;
 
     @NotNull
     private Long course;
 
     @NotNull
-    private Timestamp registrationTime;
+    private int rating;
+
+    private String comment;
+
+    @NotNull
+    private String timeOfPosting;
 }

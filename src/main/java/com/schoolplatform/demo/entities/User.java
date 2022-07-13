@@ -1,5 +1,6 @@
 package com.schoolplatform.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -48,11 +49,18 @@ public class User {
     @Column(name = "bio")
     private String bio;
 
-    @OneToMany(mappedBy="teacher_id")
+    @OneToMany()
+    @JsonIgnore
+    @JoinColumn(name = "teacher_id")
     private List<Course> courses;
 
-    @OneToMany(mappedBy = "student_id") // enrollment id
+    @OneToMany(mappedBy = "student") // enrollment id
     private List<Enrollment> enrollments;
+
+    @OneToMany()
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    private List<Review> reviews;
 
     public User(String firstname, String lastname, String email, String password) {
         this.firstname = firstname;
