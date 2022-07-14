@@ -7,10 +7,9 @@ import com.schoolplatform.demo.services.LoginService;
 import com.schoolplatform.demo.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping
@@ -24,5 +23,12 @@ public class UserRestController {
     public RegistrationResponse registerUser(@RequestBody RegistrationRequest registrationRequest){
         return userService.createUser(registrationRequest);
     }
+
+    @GetMapping("/my-profile/role")
+    public String getUserRole (String role, Principal principal){
+        return userService.getUserRole(role, principal);
+
+    }
+
 }
 

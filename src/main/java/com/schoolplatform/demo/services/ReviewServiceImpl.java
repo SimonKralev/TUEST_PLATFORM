@@ -8,6 +8,8 @@ import com.schoolplatform.demo.repository.ReviewRepository;
 import com.schoolplatform.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -19,10 +21,10 @@ public class ReviewServiceImpl implements ReviewService{
     private final CourseService courseService;
 
     @Override
-    public ReviewResponse postReview(ReviewRequest reviewRequest) {
+    public ReviewResponse postReview(ReviewRequest reviewRequest, Principal principal) {
         Review review = new Review();
+        review.setUser(userService.findUserByEmail(principal.getName()).get());
 
-        review.setUser(userService.findUserById(reviewRequest.getUser()).get());
         review.setCourse(courseService.findCourseById(reviewRequest.getCourse()));
         review.setRating(reviewRequest.getRating());
         review.setComment(reviewRequest.getComment());

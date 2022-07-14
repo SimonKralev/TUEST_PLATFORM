@@ -5,6 +5,8 @@ import com.schoolplatform.demo.models.EnrollmentResponse;
 import com.schoolplatform.demo.repository.EnrollmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 import java.sql.Timestamp;
 
 @Service
@@ -15,10 +17,11 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     private final CourseService courseService;
 
     @Override
-    public EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest) {
+    public EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest, Principal principal) {
         System.out.println("In EnrollmentServiceImpl: enrollInCourse()");
         Enrollment enrollment = new Enrollment();
-        enrollment.setStudent(userService.findUserById(7L).get());
+        enrollment.setStudent(userService.findUserByEmail(principal.getName()).get());
+
         enrollment.setCourse(courseService.findCourseById(enrollmentRequest.getCourse()));
         enrollment.setRegistrationTime(Timestamp.valueOf(enrollmentRequest.getRegistrationTime()));
 

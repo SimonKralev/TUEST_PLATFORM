@@ -49,11 +49,11 @@ public class User {
     private List<Course> courses;
 
     @OneToMany(mappedBy = "student") // enrollment id
+    @JsonIgnore
     private List<Enrollment> enrollments;
 
     @OneToMany()
     @JsonIgnore
     @JoinColumn(name = "user_id")
     private List<Review> reviews;
-
 }

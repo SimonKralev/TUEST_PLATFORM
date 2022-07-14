@@ -10,7 +10,9 @@ import com.schoolplatform.demo.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.sql.Timestamp;
+
 import java.util.Optional;
 
 @Service
@@ -20,16 +22,18 @@ public class CourseServiceImpl implements CourseService {
     private final UserService userService;
 
     @Override
-    public CourseCreationResponse createCourse(CourseCreationRequest courseCreationRequest) {
+    public CourseCreationResponse createCourse(CourseCreationRequest courseCreationRequest, Principal principal) {
         Course course = new Course();
-        Optional<User> user = userService.findUserByEmail("fibi@abv.bg");
+        Optional<User> user = userService.findUserByEmail(principal.getName());
         course.setUser(user.get());
+
         course.setTitle(courseCreationRequest.getTitle());
         course.setSubject(courseCreationRequest.getSubject());
         course.setDate(Timestamp.valueOf(courseCreationRequest.getDate()));
         course.setPrice(courseCreationRequest.getPrice());
         course.setType(CourseType.valueOf(courseCreationRequest.getType()));
         course.setVisibility(CourseVisibility.valueOf(courseCreationRequest.getVisibility()));;
+
         if (courseCreationRequest.getLocation() == null) {
             course.setType(CourseType.ONLINE);
             course.setLocation(null);

@@ -33,7 +33,7 @@
           <!-- Collapse -->
           <div class="collapse navbar-collapse text-center text-lg-left" id="navbarmain">
             <!-- Links -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" id="navbar-ul">
               <li class="nav-item ">
                 <a href="/home" th:href="@{/home}" class="nav-link smoth-scroll">
                   Home
@@ -137,12 +137,13 @@
     <a class="scroll-to-top smoth-scroll" href="#top-header">
       <i class="ti-angle-up"></i>
     </a>
-
   </body>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script th:src="@{/js/scrollToTop.js}" src="../static/js/scrollToTop.js"></script>
   <script th:src="@{/js/enrollment.js}" src="../static/js/enrollment.js"></script>
   <script th:src="@{/js/stars.js}" src="../static/js/stars.js"></script>
   <script th:src="@{/js/post-review.js}" src="../static/js/post-review.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="../static/js/nav.js" th:src="@{/js/nav.js}"></script>
 </html>

@@ -3,6 +3,8 @@ package com.schoolplatform.demo.services;
 import com.schoolplatform.demo.models.EnrollmentRequest;
 import com.schoolplatform.demo.models.EnrollmentResponse;
 
+import java.security.Principal;
+
 public interface EnrollmentService {
-    public EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest);
+    EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest, Principal principal);
 }

@@ -8,6 +8,7 @@ import com.schoolplatform.demo.services.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -15,13 +16,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReviewRestController {
     private final ReviewService reviewService;
-    private final ReviewRepository reviewRepository;
 
     @PostMapping("/courses/{course_id}/post-review")
-    public ReviewResponse postReview(@RequestBody ReviewRequest reviewRequest, @PathVariable("course_id") String course_id){
+    public ReviewResponse postReview(@RequestBody ReviewRequest reviewRequest, @PathVariable("course_id") String course_id, Principal principal){
         System.out.println("ReviewRestController: course_id = " + course_id);
         reviewRequest.setCourse(Long.valueOf(course_id));
-        return reviewService.postReview(reviewRequest);
+        return reviewService.postReview(reviewRequest, principal);
     }
 
     @GetMapping("/courses/{course_id}/reviews")

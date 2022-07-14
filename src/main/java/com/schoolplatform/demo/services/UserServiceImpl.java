@@ -9,13 +9,15 @@ import com.schoolplatform.demo.repository.LoginRepository;
 import com.schoolplatform.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final LoginService loginService;
@@ -53,6 +55,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
+
     }
 
+    @Override
+    public String getUserRole(String role, Principal principal){
+        User user = userRepository.findUserByLoginUsername(principal.getName()).get();
+        return user.getType().toString();
+    }
 }

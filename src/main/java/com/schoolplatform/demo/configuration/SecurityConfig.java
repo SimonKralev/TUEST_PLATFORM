@@ -20,6 +20,8 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 
 import javax.sql.DataSource;
 
+//.antMatchers( "/courses/{course_id}/post-review", "/courses/{course_id}/reviews")
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -37,12 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers( "/courses/create")
-                .hasAnyRole(RoleType.USER.toString(), RoleType.ADMIN.toString())
+//                .antMatchers( "/courses/create")
+//                .hasAnyRole(RoleType.USER.toString(), RoleType.ADMIN.toString())
                 .antMatchers("/home")
                 .authenticated()
-                .antMatchers("/signup", "/css/**", "/js/**", "/images/**", "/login", "/register", "/courses/all", "/courses/{course_id}", "/my-profile", "/courses/{course_id}/post-review", "/courses/{course_id}/reviews")
-                .permitAll()
+                .antMatchers("/signup", "/css/**", "/js/**", "/images/**", "/login", "/courses/create", "/register", "/courses/all", "/courses/{course_id}", "/my-profile", "/courses/{course_id}/post-review", "/courses/{course_id}/reviews")
+                .hasAnyRole(RoleType.USER.toString(), RoleType.ADMIN.toString())
                 .and()
                 .formLogin()
                 .loginPage("/login")

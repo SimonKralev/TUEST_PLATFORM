@@ -12,11 +12,14 @@ public class ReviewController {
 
     //private final ReviewService reviewService;
     private final ReviewRepository reviewRepository;
+
     /*
+
     @GetMapping("/courses/{course_id}")
     public Iterable<Review> getReviewsForCourse(@PathVariable String course_id) {
         return reviewRepository.findReviewsByCourseId(Long.valueOf(course_id));
     }
+
     @GetMapping("/courses/{course_id}")
     public ModelAndView displayAllReviews(@PathVariable String course_id) {
         ModelAndView modelAndView = new ModelAndView();

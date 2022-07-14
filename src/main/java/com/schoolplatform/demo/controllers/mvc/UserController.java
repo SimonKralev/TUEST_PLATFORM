@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -19,10 +20,11 @@ public class UserController {
     // TO DO: find out why user repository is not working
 
     @GetMapping("/my-profile")
-    public ModelAndView displayCourse() {
+    public ModelAndView displayCourse(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
         try {
-            Optional<User> user = userRepository.findUserByLoginUsername("fibi@abv.bg");
+            System.out.println(userRepository.findUserByLoginUsername(principal.getName()));
+            Optional<User> user = userRepository.findUserByLoginUsername(principal.getName());
             modelAndView.setViewName("/my-profile");
             modelAndView.addObject("user", user.get());
         } catch (Exception e) {

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class CourseController {
     private final CourseRepository courseRepository;
+    private final ReviewRepository reviewRepository;
 
     @GetMapping("/courses/create")
     public String courseView(){
@@ -23,7 +24,10 @@ public class CourseController {
     public ModelAndView displayAllCourses() {
         ModelAndView modelAndView = new ModelAndView();
         try {
-          modelAndView.addObject("allCourses", allCourses);
+            Iterable<Course> allCourses = courseRepository.findAll();
+            modelAndView.setViewName("all-courses");
+            modelAndView.addObject("allCourses", allCourses);
+
         } catch (Exception e) {
             e.printStackTrace();
             //modelAndView.setViewName("error");

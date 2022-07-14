@@ -93,6 +93,7 @@ function displayReviews(reviews, count) {
             '<h5 class="mt-2 mb-3">' + reviews[i].comment + '<a></a></h5>' +
             '</div>' +
             '</div>' +
+
             '</div>'
         )
         starRating(reviews[i].id, reviews[i].rating);

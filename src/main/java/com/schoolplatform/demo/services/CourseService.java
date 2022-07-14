@@ -3,8 +3,11 @@ import com.schoolplatform.demo.entities.Course;
 import com.schoolplatform.demo.models.CourseCreationRequest;
 import com.schoolplatform.demo.models.CourseCreationResponse;
 
+import java.security.Principal;
+
 public interface CourseService {
-    CourseCreationResponse createCourse(CourseCreationRequest courseCreationRequest);
+    CourseCreationResponse createCourse(CourseCreationRequest courseCreationRequest, Principal principal);
     Iterable<Course> findAll();
-    public Course findCourseById(Long id);
+    Course findCourseById(Long id);
 }
+
