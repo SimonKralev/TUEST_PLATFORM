@@ -29,7 +29,7 @@
         <div class="main-navigation fixed-top site-header" id="mainmenu-area">
             <nav class="navbar navbar-expand-lg ">
                 <div class="container align-items-center">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="/home">
                         <h2 class="mb-0"><span class="text-color">Cours</span>ify</h2>
                     </a>
                     <!-- Toggler -->
@@ -78,18 +78,19 @@
             <div class="container">
                 <div class="row" >
                     <div th:each="course : ${allCourses}" class="col-lg-4 col-md-6 col-sm-6">
-                        <div th:href="@{/view-course/__${course.getId()}__}"  class="blog-item card mb-4 mb-lg-0 border-0">
+                        <a th:href="@{/courses/__${course.getId()}__}">
+                        <div class="blog-item card mb-4 mb-lg-0 border-0">
                             <img src="../static/images/subjects/default.png" th:src="@{/images/subjects/__${course.getDisplayableSubject()}__}" alt="" class="img-fluid w-100">
                             <div class="blog-item-content p-4">
                                 <div class="blog-meta mb-2">
                                     <span><i th:text="${course.getDate()}" class="ti-time mr-2"></i></span>
-                                    <a th:text="${course.getTeacher_id().getFirstname() + ' ' + course.getTeacher_id().getLastname()}" href="#"></a>
+                                    <a th:text="${course.getUser().getFirstname() + ' ' + course.getUser().getLastname()}" href="#"></a>
                                 </div>
                                 <h4 th:text="${course.getTitle()}" class="mt-2 mb-3"><a href="/my-profile"></a></h4>
                                 <h5 th:text="${course.getSubject()} + ' - ' + ${course.getType()}" class="mt-2 mb-3"><a></a></h5>
-                                <!-- Add rating later -->
                             </div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 package com.schoolplatform.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "users")
+@Table(name = "users_info")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,29 +36,24 @@ public class User {
     @Size(min = 2, max = 20)
     private String lastname;
 
-    @Column(name = "email", nullable = false, unique = true)
-    @NotNull
-    @Size(min = 2, max = 40)
-    private String email;
-
-    @Column(name = "password", nullable = false, unique = true)
-    @NotNull
-    @Size(min = 8, max = 20)
-    private String password;
-
     @Column(name = "bio")
     private String bio;
 
-    @OneToMany(mappedBy="teacher_id")
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "login_id")
+    private Login login;
+
+    @OneToMany()
+    @JsonIgnore
+    @JoinColumn(name = "teacher_id")
     private List<Course> courses;
 
-    @OneToMany(mappedBy = "student_id") // enrollment id
+    @OneToMany(mappedBy = "student") // enrollment id
     private List<Enrollment> enrollments;
 
-    public User(String firstname, String lastname, String email, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-    }
+    @OneToMany()
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    private List<Review> reviews;
+
 }

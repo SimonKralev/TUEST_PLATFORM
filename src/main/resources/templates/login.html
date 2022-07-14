@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" th:src="@{'https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css'}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.css"  th:href="@{/fonts/material-icon/css/material-design-iconic-font.css}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../static/css/sign-in-style.css" th:href="@{/css/sign-in-style.css}">
+    <link rel="stylesheet" href="../static/css/home-style.css" th:href="@{/css/home-style.css}">
+    <title>Sign in</title>
+</head>
+<body class="top-header">
+<div class="sign-in-form main">
+    <section class="sign-in">
+        <div class="sign-in-container">
+            <div class="sign-in-content">
+                <div class="sign-in-form-css">
+                    <h2 class="form-title">Sign in</h2>
+                    <form th:action="@{/authenticate}" method="post">
+                        <div class="form-group">
+                            <label for="username"><i class="zmdi zmdi-email material-icons-name"></i></label>
+                            <input type="email" id="username" name="username" class="form-control" placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="current-password"><i class="zmdi zmdi-lock material-icons-name"></i></label>
+                            <input type="password" id="current-password" name="password" class="form-control" placeholder="Password"/>
+                        </div>
+                        <div class="form-group form-button">
+                            <button value="LOGIN" id="signin" type="submit" class="form-submit btn">Login in</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="sign-in-image">
+                    <figure><img src="../static/images/signInImage.png"  th:src="@{/images/signInImage.png}" alt="sign up image"></figure>
+                    <a href="http://localhost:8080/signup" class="signup-image-link">I have an account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
