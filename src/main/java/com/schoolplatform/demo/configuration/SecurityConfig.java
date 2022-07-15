@@ -27,6 +27,7 @@ import javax.sql.DataSource;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
+    //private final CustomAuthenticationFailureHandler authFailureHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home")
                 .authenticated()
                 .antMatchers("/signup", "/css/**", "/js/**", "/images/**", "/login", "/courses/create", "/register", "/courses/all", "/courses/{course_id}", "/my-profile", "/courses/{course_id}/post-review", "/courses/{course_id}/reviews")
-                .hasAnyRole(RoleType.USER.toString(), RoleType.ADMIN.toString())
+                .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")

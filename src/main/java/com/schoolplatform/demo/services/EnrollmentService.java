@@ -6,5 +6,7 @@ import com.schoolplatform.demo.models.EnrollmentResponse;
 import java.security.Principal;
 
 public interface EnrollmentService {
-    EnrollmentResponse enrollInCourse(EnrollmentRequest enrollmentRequest, Principal principal);
+    int enrollInCourse(EnrollmentRequest enrollmentRequest, Principal principal);
+
+    boolean existsByCourseIdAndStudentId(Long courseId, Long userId);
 }

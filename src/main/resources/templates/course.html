@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}"/>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="../static/css/course-style.css" th:href="@{/css/course-style.css}">
     <link rel="stylesheet" href="../static/css/review-style.css" th:href="@{/css/review-style.css}">
@@ -83,7 +84,7 @@
             </div>
             <div class="form-group">
               <i class="zmdi zmdi-money material-icons-name"></i>
-              <h4 id="enrolledStudents">Enrolled students: <span th:text="${course.enrolledStudentsCount()}"></span></h4>
+              <h4 id="enrolledStudents">Enrolled students: <span id="enrolledStudentsCount" th:text="${course.enrolledStudentsCount()}"></span></h4>
             </div>
             <div class="form-group form-button">
                 <button id="enroll" type="submit" class="enroll form-submit btn">Enroll</button>
@@ -146,4 +147,5 @@
   <script th:src="@{/js/stars.js}" src="../static/js/stars.js"></script>
   <script th:src="@{/js/post-review.js}" src="../static/js/post-review.js"></script>
   <script src="../static/js/nav.js" th:src="@{/js/nav.js}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </html>

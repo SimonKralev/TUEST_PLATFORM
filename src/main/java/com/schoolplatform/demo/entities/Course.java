@@ -73,7 +73,12 @@ public class Course {
     }
 
     public String getDisplayableSubject() {
-        List<String> subjectImages = List.of(new String[]{"science", "literature", "language", "astronomy"});
+        List<String> subjectImages = List.of(new String[]{"science", "literature", "language", "astronomy", "econ", "geo", "math", "sport"});
+        for (String img: subjectImages) {
+            if (subject.contains(img)) {
+                return img + ".png";
+            }
+        }
         if (!subjectImages.contains(subject)) {
             return "default.png";
         }
