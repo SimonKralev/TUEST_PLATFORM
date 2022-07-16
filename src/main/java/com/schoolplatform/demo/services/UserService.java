@@ -15,5 +15,7 @@ public interface UserService {
     Optional<User> findUserById(Long id);
 
     String getUserRole(String role, Principal principal);
+
+    User findUserByLoginUsername(String name);
 }
 

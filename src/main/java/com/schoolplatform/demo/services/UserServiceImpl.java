@@ -21,8 +21,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final LoginService loginService;
-
-    private final LoginRepository loginRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Override
@@ -62,5 +60,10 @@ public class UserServiceImpl implements UserService {
     public String getUserRole(String role, Principal principal){
         User user = userRepository.findUserByLoginUsername(principal.getName()).get();
         return user.getType().toString();
+    }
+
+    @Override
+    public User findUserByLoginUsername(String name) {
+        return findUserByLoginUsername(name);
     }
 }

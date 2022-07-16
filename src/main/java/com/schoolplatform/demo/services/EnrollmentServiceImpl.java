@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -49,5 +50,10 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Override
     public boolean existsByCourseIdAndStudentId(Long courseId, Long userId) {
         return enrollmentRepository.existsByCourseIdAndStudentId(courseId, userId);
+    }
+
+    @Override
+    public List<Enrollment> findAllByCourseDateAfter(Timestamp currentTimestamp) {
+        return enrollmentRepository.findAllByCourseDateAfter(currentTimestamp);
     }
 }
