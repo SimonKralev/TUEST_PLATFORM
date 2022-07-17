@@ -12,3 +12,22 @@ function activateStars(starIndex) {
     }
     globalActiveStars = starIndex;
 }
+
+function addCourseRating() {
+    fetch ("/courses/" + course_id + "/course-rating", {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json, text/plain, */*"
+        }
+    })
+        .then ((response => response.text()))
+        .then( response => {
+                console.log(response)
+                $('#average-rating').text("Rated " + response + "/5");
+            }
+        )
+        .catch ((err) => {
+            console.log(err);
+        });
+}

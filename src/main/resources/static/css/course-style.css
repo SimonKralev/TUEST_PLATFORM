@@ -150,20 +150,6 @@ input:focus, select:focus, textarea:focus {
   -o-box-shadow: none !important;
   -ms-box-shadow: none !important; }
 
-input[type=checkbox] {
-  appearance: checkbox !important;
-  -moz-appearance: checkbox !important;
-  -webkit-appearance: checkbox !important;
-  -o-appearance: checkbox !important;
-  -ms-appearance: checkbox !important; }
-
-input[type=radio] {
-  appearance: radio !important;
-  -moz-appearance: radio !important;
-  -webkit-appearance: radio !important;
-  -o-appearance: radio !important;
-  -ms-appearance: radio !important; }
-
 img {
   max-width: 100%;
   height: auto; }
@@ -255,15 +241,13 @@ body {
 .course-content {
   padding: 75px 40px; }
 
-.signup-form, .subject-image, .signin-form, .signin-image {
-  width: 50%;
-  overflow: hidden; }
-
 .subject-image {
   margin: 0 55px; }
 
 .course-title {
-  margin-bottom: 33px; }
+  display: table-cell;
+  margin-bottom: 33px;
+}
 
 .subject-image {
   margin-top: 45px; }
@@ -413,14 +397,6 @@ label {
 .label-has-error {
   top: 22%; }
 
-label.error {
-  position: relative;
-  background: url("static/images/unchecked.gif") no-repeat;
-  background-position-y: 3px;
-  padding-left: 20px;
-  display: block;
-  margin-top: 20px; }
-
 label.valid {
   display: block;
   position: absolute;
@@ -506,24 +482,7 @@ label.valid:after {
     -o-justify-content: center;
     -ms-justify-content: center; }
 
-  .signup-form {
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 0px;
-    /* box-sizing: border-box; */
-    padding: 0 30px; }
-
-  .signin-image {
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 50px;
-    order: 2;
-    -moz-order: 2;
-    -webkit-order: 2;
-    -o-order: 2;
-    -ms-order: 2; }
-
-  .signup-form, .subject-image, .signin-form, .signin-image {
+  .subject-image {
     width: auto; }
 
   .social-login {
@@ -535,19 +494,10 @@ label.valid:after {
 
   .form-button {
     text-align: center; }
-
-  .signin-form {
-    order: 1;
-    -moz-order: 1;
-    -webkit-order: 1;
-    -o-order: 1;
-    -ms-order: 1;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding: 0 30px; }
+}
 
   .course-title {
-    text-align: center; } }
+    text-align: center; }
 @media screen and (max-width: 400px) {
   .social-login {
     flex-direction: column;
@@ -583,6 +533,20 @@ label.valid:after {
 .form-option:hover {
   background-color: #D4A373;
   transition: 0.5s;
+}
+
+#title-and-rating {
+  display: table;
+}
+
+#average-rating {
+  display: table-cell;
+  padding: 20px;
+  white-space: nowrap;
+}
+
+#teacher {
+  font-weight: lighter;
 }
 
 #sourceMappingURL course-style.css.map

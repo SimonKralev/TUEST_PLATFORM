@@ -6,11 +6,11 @@ $(function () {
     postReview();
     getReviews();
     displayReviews();
-    disableReviewForm();
+    enableReviewForm();
 });
 
 function postReview() {
-    $(".review-form").on("click", "#post-review", function () {
+    $('#create-review').on("click", "#post-review", function () {
         console.log("in postReview()")
         let $comment = $("#comment").val();
         let $time_of_posting = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -96,7 +96,7 @@ function starRating(review_id, numberOfStars) {
     }
 }
 
-function disableReviewForm() {
+function enableReviewForm() {
     fetch ("/courses/" + course_id + "/reviews-allowed", {
         method: "GET",
         headers: {

@@ -26,7 +26,10 @@
       <div class="course-container" th:id="${course.getId()}">
         <div class="course-content">
           <div class="course-info" id="course">
-            <h2 class="form-title" th:text="${course.getTitle()}">Course title</h2>
+            <div  id="title-and-rating">
+              <h2 class="form-title" th:text="${course.getTitle()}">Course title</h2>
+              <span id="average-rating"></span>
+            </div>
             <div class="form-group">
               <i class="zmdi zmdi-account material-icons-name"></i>
               <h3 id="teacher" th:text="${course.getUser().getFirstname() + ' ' + course.getUser().getLastname()}"/>
@@ -37,26 +40,26 @@
             </div>
             <div class="form-group">
               <i class="zmdi zmdi-book material-icons-name"></i>
-              <h4 id="subject" class="mt-2 mb-3" th:text="${course.getSubject()}"/>
+              <h5 id="subject" class="mt-2 mb-3" th:text="${course.getSubject()}"/>
             </div>
             <div class="form-group">
               <i class="zmdi zmdi-pin-drop material-icons-name"></i>
-              <h4 id="location">Location: <span th:text="${course.getDisplayableLocation()}"></span></h4>
+              <h5 id="location">Location: <span th:text="${course.getDisplayableLocation()}"></span></h5>
             </div>
             <div class="form-group">
               <i class="zmdi zmdi-money material-icons-name"></i>
-              <h4 id="price">Price: <span th:text="${course.getPrice()}"></span></h4>
+              <h5 id="price">Price: <span th:text="${course.getPrice()}"></span></h5>
             </div>
             <div class="form-group">
               <i class="zmdi zmdi-money material-icons-name"></i>
-              <h4 id="enrolledStudents">Enrolled students: <span id="enrolledStudentsCount" th:text="${course.enrolledStudentsCount()}"></span></h4>
+              <h5 id="enrolledStudents">Enrolled students: <span id="enrolledStudentsCount" th:text="${course.enrolledStudentsCount()}"></span></h5>
             </div>
             <div class="form-group form-button">
                 <button id="enroll" type="submit" class="enroll form-submit btn">Enroll</button>
             </div>
           </div>
           <div class="subject-image">
-            <figure><img  src="../static/images/subjects/default.png" th:src="@{/images/subjects/__${course.getDisplayableSubject()}__}" alt="sign up image"></figure>
+            <figure><img src="../static/images/subjects/default.png" th:src="@{/images/subjects/__${course.getDisplayableSubject()}__}" alt="sign up image"></figure>
           </div>
         </div>
       </div>
@@ -64,32 +67,6 @@
 
     <!-- Review form -->
     <section class="create-review" id="create-review">
-      <!--div class="container">
-        <div class="review-content">
-          <div class="review-form">
-            <h2 class="form-title">Write a review</h2>
-            <br>
-            <div class="register-form" id="register-form">
-              <div class="form-group">
-                <div class="star-rating">
-                  <span class="star" id="star1" onclick="activateStars(1)">&#9733;</span>
-                  <span class="star" id="star2" onclick="activateStars(2)">&#9733;</span>
-                  <span class="star" id="star3" onclick="activateStars(3)">&#9733;</span>
-                  <span class="star" id="star4" onclick="activateStars(4)">&#9733;</span>
-                  <span class="star" id="star5" onclick="activateStars(5)">&#9733;</span>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="comment"><i class="zmdi zmdi-email"></i></label>
-                <input type="text" name="comment" id="comment" placeholder="Comment"/>
-              </div>
-              <div class="form-group form-button">
-                <button type="submit" name="review" id="post-review" class="form-submit post form-submit btn" value="Post review">Post review</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div-->
     </section>
 
     <section class="section blog-home border-top row" id="review-section">

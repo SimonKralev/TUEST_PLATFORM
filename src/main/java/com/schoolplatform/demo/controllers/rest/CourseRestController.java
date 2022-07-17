@@ -17,4 +17,13 @@ public class CourseRestController {
     public CourseCreationResponse createCourse(@RequestBody CourseCreationRequest courseCreationRequest, Principal principal) {
         return courseService.createCourse(courseCreationRequest, principal);
     }
+
+    @GetMapping("/courses/{course_id}/course-rating")
+    public Double courseRating(@PathVariable("course_id") Long courseId) {
+        Double rating = courseService.findCourseById(courseId).averageRating();
+        if (rating.isNaN()) {
+            return Double.valueOf(0);
+        }
+        return rating;
+    }
 }

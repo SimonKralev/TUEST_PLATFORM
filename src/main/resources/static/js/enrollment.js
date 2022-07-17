@@ -40,6 +40,7 @@ function enrollInCourse() {
 }
 
 function enrollmentButton() {
+    // check if user is already enrolled and if they can enroll
     fetch ("/courses/" + course_id + "/user-enrolled", {
         method: "GET",
         headers: {
@@ -51,8 +52,9 @@ function enrollmentButton() {
         .then (function (response) {
             console.log("/courses/" + course_id + "/user-enrolled response: " + response);
             document.getElementById("enroll").innerText = response;
-            if (response === "Enrolled") {
+            if (response !== "Enroll") {
                 document.querySelector("#enroll").disabled = true;
+                addCourseRating();
             }
         })
         .catch ((err) => {
