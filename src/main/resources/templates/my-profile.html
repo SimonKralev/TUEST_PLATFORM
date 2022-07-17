@@ -20,10 +20,10 @@
 			<section class="page-banner-area bg-grey" th:object="${user}">
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-9 col-md-12 col-12 ">
+						<div class="col-lg-9 col-md-12 col-12">
 							<div class="page-banner-content text-center">
 								<h1 class="display-4 font-weight-bold mb-2" th:text="${user.getFirstname() + ' ' + user.getLastname()}"></h1>
-								<p>This is your profile</p>
+								<!--p>This is your profile</p-->
 								<p th:text="'You are a ' + ${user.getType()}"/>
 							</div>
 						</div>
@@ -43,6 +43,11 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</section>
+			<section>
+				<div class="display-flex-center container">
+					<button id="logout-btn" class="btn form-submit" onclick="window.location ='/logout'">Logout</button>
 				</div>
 			</section>
 			<section class="section blog-wrap border-bottom">

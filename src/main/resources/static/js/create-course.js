@@ -2,6 +2,7 @@
 $(function () {
     createCourse();
 });
+
 function createCourse() {
 
     $(".create-course").on("click", "#create-course", function () {
@@ -47,6 +48,9 @@ function createCourse() {
                 } else {
                     console.log("Successfully created a course");
                     // redirect to the course
+                    response.json().then(response =>
+                        window.location = "/courses/" + response.id
+                    );
                 }
             });
     });

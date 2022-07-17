@@ -51,7 +51,9 @@ function enrollmentButton() {
         .then (function (response) {
             console.log("/courses/" + course_id + "/user-enrolled response: " + response);
             document.getElementById("enroll").innerText = response;
-            document.querySelector("#enroll").disabled = true;
+            if (response === "Enrolled") {
+                document.querySelector("#enroll").disabled = true;
+            }
         })
         .catch ((err) => {
            console.log(err);

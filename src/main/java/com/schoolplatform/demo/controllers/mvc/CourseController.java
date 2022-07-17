@@ -22,13 +22,13 @@ public class CourseController {
     public ModelAndView displayAllCourses() {
         ModelAndView modelAndView = new ModelAndView();
         try {
-            Iterable<Course> allCourses = courseService.findAll();
+            Iterable<Course> allCourses = courseService.findAllByOrderByDateAsc();
             modelAndView.setViewName("all-courses");
             modelAndView.addObject("allCourses", allCourses);
 
         } catch (Exception e) {
             e.printStackTrace();
-            //modelAndView.setViewName("error");
+            modelAndView.setViewName("error");
         }
         return modelAndView;
     }
@@ -42,6 +42,7 @@ public class CourseController {
             courseModelAndView.addObject("course", course);
         } catch (Exception e) {
             e.printStackTrace();
+            courseModelAndView.setViewName("error");
         }
         return courseModelAndView;
     }

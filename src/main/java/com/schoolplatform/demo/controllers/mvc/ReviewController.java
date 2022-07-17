@@ -1,18 +1,20 @@
 package com.schoolplatform.demo.controllers.mvc;
 import com.schoolplatform.demo.entities.Review;
 import com.schoolplatform.demo.repository.ReviewRepository;
+import com.schoolplatform.demo.services.CourseService;
+import com.schoolplatform.demo.services.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.security.Principal;
+import java.sql.Timestamp;
+import java.util.Date;
+
 @Controller
 @RequiredArgsConstructor
 public class ReviewController {
-
-    //private final ReviewService reviewService;
-    private final ReviewRepository reviewRepository;
-
     /*
 
     @GetMapping("/courses/{course_id}")

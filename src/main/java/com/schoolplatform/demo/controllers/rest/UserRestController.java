@@ -1,12 +1,11 @@
 package com.schoolplatform.demo.controllers.rest;
 
-import com.schoolplatform.demo.models.LoginRequest;
+import com.schoolplatform.demo.controllers.mvc.HomeController;
 import com.schoolplatform.demo.models.RegistrationRequest;
 import com.schoolplatform.demo.models.RegistrationResponse;
 import com.schoolplatform.demo.services.LoginService;
 import com.schoolplatform.demo.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -26,8 +25,10 @@ public class UserRestController {
 
     @GetMapping("/my-profile/role")
     public String getUserRole (String role, Principal principal){
+        if (principal == null) {
+            return "login";
+        }
         return userService.getUserRole(role, principal);
-
     }
 
 }
