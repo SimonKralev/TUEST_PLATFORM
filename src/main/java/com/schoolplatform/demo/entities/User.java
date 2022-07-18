@@ -37,6 +37,7 @@ public class User {
     private String lastname;
 
     @Column(name = "bio")
+    @Size(min = 0, max = 500)
     private String bio;
 
     @OneToOne(cascade = CascadeType.REMOVE)

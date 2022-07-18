@@ -1,7 +1,7 @@
 "use strict";
 $(function () {
-    addNavbar();
     allowCourseCreating();
+    addNavbar();
 });
 
 function allowCourseCreating() {
@@ -11,6 +11,9 @@ function allowCourseCreating() {
 
         success: function (response) {
             console.log("/my-profile/role response: " + response);
+            if (response === "login") {
+                window.location = "/login";
+            }
             if (response === "TEACHER") {
                 $('#navbar-ul').append("<li class=\"nav-item\">\n" +
                     "                        <a href=\"/courses/create\" th:href=\"@{/courses/create}\" class=\"nav-link smoth-scroll\">\n" +

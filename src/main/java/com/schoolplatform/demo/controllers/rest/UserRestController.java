@@ -1,13 +1,12 @@
 package com.schoolplatform.demo.controllers.rest;
 
-import com.schoolplatform.demo.controllers.mvc.HomeController;
+import com.schoolplatform.demo.models.NewBioRequest;
 import com.schoolplatform.demo.models.RegistrationRequest;
 import com.schoolplatform.demo.models.RegistrationResponse;
 import com.schoolplatform.demo.services.LoginService;
 import com.schoolplatform.demo.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 
 @RestController
@@ -29,6 +28,11 @@ public class UserRestController {
             return "login";
         }
         return userService.getUserRole(role, principal);
+    }
+
+    @PostMapping("/my-profile/change-bio")
+    public String changeBio(@RequestBody NewBioRequest newBioRequest, Principal principal) {
+        return userService.changeBio(newBioRequest, principal);
     }
 
 }

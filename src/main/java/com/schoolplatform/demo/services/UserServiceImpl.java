@@ -3,6 +3,7 @@ package com.schoolplatform.demo.services;
 import com.schoolplatform.demo.entities.Login;
 import com.schoolplatform.demo.entities.User;
 import com.schoolplatform.demo.entities.UserType;
+import com.schoolplatform.demo.models.NewBioRequest;
 import com.schoolplatform.demo.models.RegistrationRequest;
 import com.schoolplatform.demo.models.RegistrationResponse;
 import com.schoolplatform.demo.repository.LoginRepository;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -65,5 +67,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByLoginUsername(String name) {
         return findUserByLoginUsername(name);
+    }
+
+    @Override
+    public String changeBio(@RequestBody NewBioRequest newBioRequest, Principal principal) {
+        User user = userRepository.findUserByLoginUsername(principal.getName()).get();
+        user.setBio(newBioRequest.getNewBio());
+        userRepository.save(user);
+        return "Successfully changed your bio to:\n" + user.getBio();
     }
 }

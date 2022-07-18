@@ -17,11 +17,13 @@ public class UserController {
 
     UserRepository userRepository;
 
-    // TO DO: find out why user repository is not working
-
     @GetMapping("/my-profile")
-    public ModelAndView displayCourse(Principal principal) {
+    public ModelAndView userInfo(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
+        if (principal == null) {
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }
         try {
             System.out.println(userRepository.findUserByLoginUsername(principal.getName()));
             Optional<User> user = userRepository.findUserByLoginUsername(principal.getName());
