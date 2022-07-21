@@ -23,7 +23,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public ReviewResponse postReview(ReviewRequest reviewRequest, Principal principal) {
         Review review = new Review();
-        review.setUser(userService.findUserByEmail(principal.getName()).get());
+        review.setUser(userService.findUserByEmail(principal.getName()));
 
         review.setCourse(courseService.findCourseById(reviewRequest.getCourse()));
         review.setRating(reviewRequest.getRating());

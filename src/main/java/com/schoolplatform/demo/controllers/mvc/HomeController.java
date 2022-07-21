@@ -34,7 +34,7 @@ public class HomeController {
     @GetMapping("/home")
     public ModelAndView upcomingCourses(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
-        List<Enrollment> enrollments = userService.findUserByEmail(principal.getName()).get().getEnrollments();
+        List<Enrollment> enrollments = userService.findUserByEmail(principal.getName()).getEnrollments();
         List<CourseResponse> upcomingCourses = new ArrayList<>();
 
         System.out.println(enrollments);
@@ -60,8 +60,8 @@ public class HomeController {
         try {
             modelAndView.setViewName("/home");
             modelAndView.addObject("upcomingCourses", upcomingCourses);
-            Optional<User> user = userService.findUserByEmail(principal.getName());
-            modelAndView.addObject("user", user.get());
+            User user = userService.findUserByEmail(principal.getName());
+            modelAndView.addObject("user", user);
         } catch (Exception e) {
             e.printStackTrace();
         }

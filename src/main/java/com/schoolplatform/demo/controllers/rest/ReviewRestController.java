@@ -39,7 +39,7 @@ public class ReviewRestController {
     @GetMapping("/courses/{course_id}/reviews-allowed")
     public boolean userEnrolledAndCourseEnded(@PathVariable("course_id") Long courseId, Principal principal) {
         if (courseService.findCourseById(courseId).getDate().before(new Timestamp((new Date()).getTime()))) {
-            User user = userService.findUserByEmail(principal.getName()).get();
+            User user = userService.findUserByEmail(principal.getName());
             if (enrollmentService.existsByCourseIdAndStudentId(courseId, user.getId())) {
                 return true;
             }

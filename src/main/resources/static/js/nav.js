@@ -53,8 +53,8 @@ function addNavbar() {
         "         </a>\n" +
         "        </li>\n" +
         "        <li class=\"nav-item\">\n" +
-        "         <a href=\"/about\" th:href=\"@{/about}\" class=\"nav-link smoth-scroll\">\n" +
-        "          About\n" +
+        "         <a href=\"/teachers\" th:href=\"@{/teachers}\" class=\"nav-link smoth-scroll\">\n" +
+        "          Teachers\n" +
         "         </a>\n" +
         "        </li>\n" +
         "       </ul>\n" +

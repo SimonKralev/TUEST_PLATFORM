@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,19 +49,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findUserByEmail(String email) {
+    public User findUserByEmail(String email) {
         return userRepository.findUserByLoginUsername(email);
     }
 
     @Override
-    public Optional<User> findUserById(Long id) {
-        return userRepository.findById(id);
-
-    }
-
-    @Override
     public String getUserRole(String role, Principal principal){
-        User user = userRepository.findUserByLoginUsername(principal.getName()).get();
+        User user = userRepository.findUserByLoginUsername(principal.getName());
         return user.getType().toString();
     }
 
@@ -71,9 +66,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String changeBio(@RequestBody NewBioRequest newBioRequest, Principal principal) {
-        User user = userRepository.findUserByLoginUsername(principal.getName()).get();
+        User user = userRepository.findUserByLoginUsername(principal.getName());
         user.setBio(newBioRequest.getNewBio());
         userRepository.save(user);
         return "Successfully changed your bio to:\n" + user.getBio();
+    }
+
+    @Override
+    public User findById(Long userId) {
+        return userRepository.findById(userId).get();
+    }
+
+    @Override
+    public List<User> findAllByTypeEquals(UserType role) {
+        return userRepository.findAllByTypeEquals(role);
     }
 }

@@ -25,7 +25,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         System.out.println("In EnrollmentServiceImpl: enrollInCourse()");
         Enrollment enrollment = new Enrollment();
 
-        User user = userService.findUserByEmail(principal.getName()).get();
+        User user = userService.findUserByEmail(principal.getName());
         enrollment.setStudent(user);
 
         Course course = courseService.findCourseById(enrollmentRequest.getCourse());

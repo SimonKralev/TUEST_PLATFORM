@@ -9,7 +9,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}"/>
 
         <link rel="stylesheet" href="../static/css/home-style.css"  th:href="@{/css/home-style.css}">
-        <title>Courses</title>
+        <title>All teachers</title>
     </head>
 
 
@@ -23,7 +23,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-9 col-md-12 col-12 ">
                         <div class="page-banner-content text-center">
-                            <h1 class="display-4 font-weight-bold mb-2">Public courses</h1>
+                            <h1 class="display-4 font-weight-bold mb-2">Teachers</h1>
                         </div>
                     </div>
                 </div>
@@ -32,17 +32,14 @@
         <section class="section blog-home border-top" id="blog">
             <div class="container">
                 <div class="row">
-                    <div th:each="course : ${allCourses}" class="col-lg-4 col-md-6 col-sm-6">
-                        <a th:href="@{/courses/__${course.getId()}__}">
+                    <div th:each="teacher : ${allTeachers}" class="col-lg-4 col-md-6 col-sm-6">
+                        <a th:href="@{/profile/__${teacher.getId()}__}">
                         <div class="blog-item card mb-4 mb-lg-0 border-0">
-                            <img src="../static/images/subjects/default.png" th:src="@{/images/subjects/__${course.getDisplayableSubject()}__}" alt="" class="img-fluid w-100">
+                            <!--img src="../static/images/subjects/default.png" th:src="@{/images/subjects/__${course.getDisplayableSubject()}__}" alt="" class="img-fluid w-100"-->
                             <div class="blog-item-content p-4">
                                 <div class="blog-meta mb-2">
-                                    <span><i th:text="${course.getDate()}" class="ti-time mr-2"></i></span>
-                                    <a th:text="${course.getUser().getFirstname() + ' ' + course.getUser().getLastname()}" th:href="@{/profile/__${course.getUser.getId()}__}"></a>
+                                    <a th:text="${teacher.getFirstname() + ' ' + teacher.getLastname()}" th:href="@{/profile/__${teacher.getId()}__}"></a>
                                 </div>
-                                <h4 th:text="${course.getTitle()}" class="mt-2 mb-3"><a href="/my-profile"></a></h4>
-                                <h5 th:text="${course.getSubject()} + ' - ' + ${course.getType()}" class="mt-2 mb-3"><a></a></h5>
                             </div>
                         </div>
                         </a>

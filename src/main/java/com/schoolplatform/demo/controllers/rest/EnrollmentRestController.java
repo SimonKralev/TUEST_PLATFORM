@@ -30,7 +30,7 @@ public class EnrollmentRestController {
         if (courseService.findCourseById(courseId).getDate().before(new Timestamp((new Date()).getTime()))) {
             return "The course has already ended.";
         }
-        if (enrollmentService.existsByCourseIdAndStudentId(courseId, userService.findUserByEmail(principal.getName()).get().getId())) {
+        if (enrollmentService.existsByCourseIdAndStudentId(courseId, userService.findUserByEmail(principal.getName()).getId())) {
             return "Enrolled";
         }
         else {

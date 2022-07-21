@@ -23,7 +23,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public CourseCreationResponse createCourse(CourseCreationRequest courseCreationRequest, Principal principal) {
         Course course = new Course();
-        User user = userService.findUserByEmail(principal.getName()).get();
+        User user = userService.findUserByEmail(principal.getName());
         course.setUser(user);
 
         course.setTitle(courseCreationRequest.getTitle());
