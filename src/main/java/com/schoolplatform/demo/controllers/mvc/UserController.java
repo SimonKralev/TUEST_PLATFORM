@@ -21,7 +21,7 @@ public class UserController {
     @GetMapping("/my-profile")
     public ModelAndView userInfo(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
-        if (principal == null) {
+        if (principal == null || principal.getName().isBlank()) {
             modelAndView.setViewName("login");
             return modelAndView;
         }
